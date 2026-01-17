@@ -1,0 +1,49 @@
+{% extends 'home/index.html.twig' %}
+
+{% block title %} Create User{% endblock %}
+
+{% block body %}
+    {{ parent() }}
+    <div class="container mt-5">
+        <h1 class="mb-4">Create a User</h1>
+
+        {# Form start #}
+        {{ form_start(userForm, {'attr': {'class': 'needs-validation'}}) }}
+
+        <div class="mb-3">
+            {{ form_label(userForm.fullName, 'Full Name', {'label_attr': {'class': 'form-label'}}) }}
+            {{ form_widget(userForm.fullName, {'attr': {'class': 'form-control'}}) }}
+            {{ form_errors(userForm.fullName) }}
+        </div>
+
+        <div class="mb-3">
+            {{ form_label(userForm.birthDate, 'Birth Date', {'label_attr': {'class': 'form-label'}}) }}
+            {{ form_widget(userForm.birthDate, {'attr': {'class': 'form-control', 'type': 'date'}}) }}
+            {{ form_errors(userForm.birthDate) }}
+        </div>
+
+        <div class="mb-3">
+            {{ form_label(userForm.occupation, 'occupation', {'label_attr': {'class': 'form-label'}}) }}
+            {{ form_widget(userForm.occupation, {'attr': {'class': 'form-control'}}) }}
+            {{ form_errors(userForm.occupation) }}
+        </div>
+
+        <div class="mb-3">
+            {{ form_widget(userForm.save) }}
+        </div>
+
+        {{ form_end(userForm) }}
+
+        <hr>
+        <div class="card mt-4">
+            <div class="card-body">
+                <h3 class="card-title">User Entered:</h3>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item"><strong>Full Name:</strong> {{ user.fullName }}</li>
+                    <li class="list-group-item"><strong>Birth Date:</strong> {{ user.birthDate|date('Y-m-d') }}</li>
+                    <li class="list-group-item"><strong>Occupation:</strong> {{ attribute(user, 'Occupation') }}</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+{% endblock %}

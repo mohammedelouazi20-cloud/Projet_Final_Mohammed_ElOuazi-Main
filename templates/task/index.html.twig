@@ -1,0 +1,66 @@
+{% extends 'home/index.html.twig' %}
+
+{% block title %}
+    Task
+{% endblock %}
+
+{% block body %}
+    {{ parent() }}
+    <div class="container mt-5">
+        <h2 class="mb-4">Create a Task</h2>
+        <form method="post" class="card p-4 shadow">
+            <div class="mb-3">
+                <label class="form-label">Name</label>
+                <label>
+                    <input
+                            type="text"
+                            name="name"
+                            class="form-control"
+                            placeholder="Enter your name"
+                            required
+                    >
+                </label>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Date</label>
+                <label>
+                    <input
+                            type="date"
+                            name="date"
+                            class="form-control"
+                            required
+                    >
+                </label>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Task</label>
+                <label>
+                    <textarea
+                            name="task"
+                            class="form-control"
+                            rows="3"
+                            placeholder="Describe the task"
+                            required
+                    ></textarea>
+                </label>
+            </div>
+
+            <button type="submit" class="btn btn-primary">
+                Save Task
+            </button>
+        </form>
+
+        {% if name %}
+            <div class="alert alert-success mt-4">
+                <h5>Task saved</h5>
+                <ul>
+                    <li><strong>Name:</strong> {{ name }}</li>
+                    <li><strong>Date:</strong> {{ date }}</li>
+                    <li><strong>Task:</strong> {{ task }}</li>
+                </ul>
+            </div>
+        {% endif %}
+
+    </div>
+{% endblock %}
